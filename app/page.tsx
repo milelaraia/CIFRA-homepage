@@ -3,35 +3,12 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import {
-  Trophy,
-  Shield,
-  Flame,
-  Target,
-  User,
-  Home,
-  MoreHorizontal,
-  Settings,
-  BookOpen,
-  Award,
-  BarChart3,
-} from "lucide-react"
-import { useState, useEffect } from "react"
+import Header from "@/components/header"
+import { Trophy, Shield, Flame, Target } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 export default function HomePage() {
-  const [isOptionsOpen, setIsOptionsOpen] = useState(false)
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as Element
-      if (!target.closest("[data-dropdown]")) {
-        setIsOptionsOpen(false)
-      }
-    }
-
-    document.addEventListener("click", handleClickOutside)
-    return () => document.removeEventListener("click", handleClickOutside)
-  }, [])
+  const router = useRouter()
 
   const handleChallengeClick = () => {
     console.log("[v0] Desafio mensal clicado")
@@ -40,79 +17,16 @@ export default function HomePage() {
 
   const handleScoreClick = () => {
     console.log("[v0] Pontuação clicada")
-    // Aqui você pode adicionar navegação para página de progresso/conquistas
+    router.push("/achievements")
   }
 
-  const handleOptionsClick = () => {
-    setIsOptionsOpen(!isOptionsOpen)
-  }
-
-  const handleOptionSelect = (option: string) => {
-    console.log(`[v0] Opção selecionada: ${option}`)
-    setIsOptionsOpen(false)
-    // Aqui você pode adicionar navegação para cada opção
+  const handleStartTraining = () => {
+    router.push("/training")
   }
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Header */}
-      <header className="flex items-center justify-between p-4 bg-gray-900 border-b border-gray-800">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 border-2 border-green-500 rounded flex items-center justify-center">
-            <Shield className="w-4 h-4 text-green-500" />
-          </div>
-          <span className="text-green-500 font-bold text-lg">CIFRA</span>
-        </div>
-
-        <div className="flex items-center gap-4">
-          <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
-            <User className="w-4 h-4" />
-          </Button>
-          <div className="relative" data-dropdown>
-            <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white" onClick={handleOptionsClick}>
-              <MoreHorizontal className="w-4 h-4" />
-            </Button>
-            {isOptionsOpen && (
-              <div className="absolute right-0 top-full mt-2 w-56 bg-gray-800 border border-gray-700 rounded-lg shadow-lg z-50">
-                <div className="py-2">
-                  <button
-                    onClick={() => handleOptionSelect("Configurações de Perfil")}
-                    className="w-full px-4 py-2 text-left text-sm text-gray-300 hover:bg-gray-700 hover:text-white flex items-center gap-3"
-                  >
-                    <Settings className="w-4 h-4" />
-                    Configurações de Perfil
-                  </button>
-                  <button
-                    onClick={() => handleOptionSelect("Material Didático")}
-                    className="w-full px-4 py-2 text-left text-sm text-gray-300 hover:bg-gray-700 hover:text-white flex items-center gap-3"
-                  >
-                    <BookOpen className="w-4 h-4" />
-                    Material Didático
-                  </button>
-                  <button
-                    onClick={() => handleOptionSelect("Sistema de Pontos")}
-                    className="w-full px-4 py-2 text-left text-sm text-gray-300 hover:bg-gray-700 hover:text-white flex items-center gap-3"
-                  >
-                    <Award className="w-4 h-4" />
-                    Sistema de Pontos
-                  </button>
-                  <button
-                    onClick={() => handleOptionSelect("Ranking")}
-                    className="w-full px-4 py-2 text-left text-sm text-gray-300 hover:bg-gray-700 hover:text-white flex items-center gap-3"
-                  >
-                    <BarChart3 className="w-4 h-4" />
-                    Ranking
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-          <Button variant="ghost" size="sm" className="text-green-500 hover:text-green-400">
-            <Home className="w-4 h-4" />
-            <span className="ml-1 text-xs">HOME</span>
-          </Button>
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content */}
       <main className="p-6 space-y-8">
@@ -127,6 +41,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 className="bg-green-500 hover:bg-green-600 text-black font-bold px-12 py-6 text-xl shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
+                onClick={handleStartTraining}
               >
                 INICIAR TREINAMENTO
               </Button>
