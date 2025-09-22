@@ -38,8 +38,8 @@ export default function RegisterPage() {
       <header className="bg-gray-800 border-b border-gray-700 p-4">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <Link href="/" className="text-2xl font-bold text-green-400">
-              CIFRA
+            <Link href="/" className="text-2xl font-bold text-white-400">
+              C.I.F.R.A
             </Link>
           </div>
           <nav className="flex items-center space-x-6">

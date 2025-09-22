@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Shield, User, Home, MoreHorizontal } from "lucide-react"
+import { SimpleIcons } from "@/components/simple-icons"
 import { useState } from "react"
 import Link from "next/link"
 
@@ -26,21 +26,21 @@ export default function LoginPage() {
       <header className="flex items-center justify-between p-4 bg-gray-900 border-b border-gray-800">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 border-2 border-green-500 rounded flex items-center justify-center">
-            <Shield className="w-4 h-4 text-green-500" />
+            <SimpleIcons.Shield className="w-4 h-4 text-green-500" />
           </div>
-          <span className="text-green-500 font-bold text-lg">CIFRA</span>
+          <span className="text-white-500 font-bold text-lg">C.I.F.R.A</span>
         </div>
 
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
-            <User className="w-4 h-4" />
+            <SimpleIcons.User className="w-4 h-4" />
           </Button>
           <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white">
-            <MoreHorizontal className="w-4 h-4" />
+            <SimpleIcons.MoreHorizontal className="w-4 h-4" />
           </Button>
           <Link href="/">
             <Button variant="ghost" size="sm" className="text-green-500 hover:text-green-400">
-              <Home className="w-4 h-4" />
+              <SimpleIcons.Home className="w-4 h-4" />
               <span className="ml-1 text-xs">HOME</span>
             </Button>
           </Link>

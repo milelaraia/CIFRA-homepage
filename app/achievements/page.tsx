@@ -2,8 +2,8 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import Header from "@/components/header"
-import { Trophy, Shield, Star, Zap, CheckCircle } from "lucide-react"
+import { StandardHeader } from "@/components/standard-header"
+import { SimpleIcons } from "@/components/simple-icons"
 
 export default function AchievementsPage() {
   // Mock data for achievements
@@ -12,47 +12,42 @@ export default function AchievementsPage() {
       id: 1,
       name: "Primeiro Passo",
       description: "Completou o primeiro módulo de treinamento",
-      date: "15/12/2024",
-      icon: <CheckCircle className="w-6 h-6" />,
+      icon: <SimpleIcons.CheckCircle className="w-6 h-6" />,
       color: "bg-green-500",
     },
     {
       id: 2,
       name: "Detector de Phishing",
       description: "Identificou corretamente 10 emails de phishing",
-      date: "10/12/2024",
-      icon: <Shield className="w-6 h-6" />,
+      icon: <SimpleIcons.Shield className="w-6 h-6" />,
       color: "bg-blue-500",
     },
     {
       id: 3,
       name: "Especialista em Segurança",
       description: "Completou todos os módulos básicos",
-      date: "05/12/2024",
-      icon: <Trophy className="w-6 h-6" />,
+      icon: <SimpleIcons.Trophy className="w-6 h-6" />,
       color: "bg-yellow-500",
     },
     {
       id: 4,
       name: "Guardião Digital",
       description: "Passou em 5 simulações consecutivas",
-      date: "01/12/2024",
-      icon: <Star className="w-6 h-6" />,
+      icon: <SimpleIcons.Star className="w-6 h-6" />,
       color: "bg-purple-500",
     },
     {
       id: 5,
       name: "Velocista",
       description: "Completou um módulo em menos de 10 minutos",
-      date: "28/11/2024",
-      icon: <Zap className="w-6 h-6" />,
+      icon: <SimpleIcons.Flame className="w-6 h-6" />,
       color: "bg-orange-500",
     },
   ]
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <Header showBackButton={true} />
+      <StandardHeader showBackButton={true} />
 
       {/* Main Content */}
       <main className="p-6 max-w-4xl mx-auto">
@@ -75,10 +70,9 @@ export default function AchievementsPage() {
                     <div className="flex-1">
                       <h3 className="text-xl font-semibold text-white mb-1">{achievement.name}</h3>
                       <p className="text-gray-400 mb-2">{achievement.description}</p>
-                      <span className="text-sm text-gray-500">Conquistado em {achievement.date}</span>
                     </div>
                     <Badge variant="secondary" className="bg-green-500 text-black">
-                      <Trophy className="w-3 h-3 mr-1" />
+                      <SimpleIcons.Trophy className="w-3 h-3 mr-1" />
                       Desbloqueado
                     </Badge>
                   </div>
@@ -88,7 +82,7 @@ export default function AchievementsPage() {
           ) : (
             <Card className="bg-gray-800 border-gray-700">
               <CardContent className="p-8 text-center">
-                <Trophy className="w-12 h-12 text-gray-500 mx-auto mb-4" />
+                <SimpleIcons.Trophy className="w-12 h-12 text-gray-500 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-gray-400 mb-2">Nenhuma conquista ainda</h3>
                 <p className="text-gray-500">
                   Complete treinamentos e simulações para desbloquear suas primeiras conquistas!

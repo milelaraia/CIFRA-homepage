@@ -1,29 +1,16 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Shield, ArrowLeft } from "lucide-react"
-import { useRouter } from "next/navigation"
+import { StandardHeader } from "@/components/standard-header"
+import { SimpleIcons } from "@/components/simple-icons"
 
 export default function AboutPage() {
-  const router = useRouter()
-
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Header */}
-      <header className="flex items-center justify-between p-4 bg-gray-900 border-b border-gray-800">
-        <div className="flex items-center gap-4">
-          <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white" onClick={() => router.back()}>
-            <ArrowLeft className="w-4 h-4" />
-          </Button>
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 border-2 border-green-500 rounded flex items-center justify-center">
-              <Shield className="w-4 h-4 text-green-500" />
-            </div>
-            <span className="text-green-500 font-bold text-lg">CIFRA</span>
-          </div>
-        </div>
-      </header>
+      <StandardHeader showBackButton={true} />
+
+      <div className="p-4">{/* botão de voltar foi removido e integrado ao StandardHeader */}</div>
 
       {/* Main Content */}
       <main className="p-6 max-w-4xl mx-auto">
@@ -37,7 +24,7 @@ export default function AboutPage() {
               <div className="space-y-6">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 border-2 border-green-500 rounded-lg flex items-center justify-center">
-                    <Shield className="w-8 h-8 text-green-500" />
+                    <SimpleIcons.Shield className="w-8 h-8 text-green-500" />
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold text-white">C.I.F.R.A</h2>

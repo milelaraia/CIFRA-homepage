@@ -2,8 +2,8 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import Header from "@/components/header"
-import { BarChart3, Trophy, Medal, Crown } from "lucide-react"
+import { StandardHeader } from "@/components/standard-header"
+import { SimpleIcons } from "@/components/simple-icons"
 
 export default function RankingPage() {
   // Mock data for ranking
@@ -23,13 +23,13 @@ export default function RankingPage() {
   const getRankIcon = (position: number) => {
     switch (position) {
       case 1:
-        return <Crown className="w-5 h-5 text-yellow-500" />
+        return <SimpleIcons.Crown className="w-5 h-5 text-yellow-500" />
       case 2:
-        return <Medal className="w-5 h-5 text-gray-400" />
+        return <SimpleIcons.Medal className="w-5 h-5 text-gray-400" />
       case 3:
-        return <Medal className="w-5 h-5 text-amber-600" />
+        return <SimpleIcons.Medal className="w-5 h-5 text-amber-600" />
       default:
-        return <Trophy className="w-4 h-4 text-gray-500" />
+        return <SimpleIcons.Trophy className="w-4 h-4 text-gray-500" />
     }
   }
 
@@ -48,7 +48,7 @@ export default function RankingPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <Header showBackButton={true} />
+      <StandardHeader showBackButton={true} />
 
       {/* Main Content */}
       <main className="p-6 max-w-4xl mx-auto">
@@ -60,7 +60,7 @@ export default function RankingPage() {
         <Card className="bg-gray-900 border-gray-800">
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
-              <BarChart3 className="w-5 h-5 text-green-500" />
+              <SimpleIcons.BarChart3 className="w-5 h-5 text-green-500" />
               Classificação Geral
             </CardTitle>
           </CardHeader>
@@ -91,7 +91,7 @@ export default function RankingPage() {
                 ))
               ) : (
                 <div className="text-center py-8 text-gray-400">
-                  <BarChart3 className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                  <SimpleIcons.BarChart3 className="w-12 h-12 mx-auto mb-4 opacity-50" />
                   <p>Nenhum usuário no ranking ainda.</p>
                 </div>
               )}
@@ -105,9 +105,9 @@ export default function RankingPage() {
             <Card key={user.position} className="bg-gray-900 border-gray-800 text-center">
               <CardContent className="p-6">
                 <div className="mb-4">
-                  {index === 0 && <Crown className="w-8 h-8 text-yellow-500 mx-auto" />}
-                  {index === 1 && <Medal className="w-8 h-8 text-gray-400 mx-auto" />}
-                  {index === 2 && <Medal className="w-8 h-8 text-amber-600 mx-auto" />}
+                  {index === 0 && <SimpleIcons.Crown className="w-8 h-8 text-yellow-500 mx-auto" />}
+                  {index === 1 && <SimpleIcons.Medal className="w-8 h-8 text-gray-400 mx-auto" />}
+                  {index === 2 && <SimpleIcons.Medal className="w-8 h-8 text-amber-600 mx-auto" />}
                 </div>
                 <h3 className="text-white font-bold mb-2">{user.username}</h3>
                 <p className="text-green-500 text-2xl font-bold">{user.score}</p>

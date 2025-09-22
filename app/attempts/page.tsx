@@ -1,9 +1,9 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Shield, Home, CheckCircle, XCircle, Calendar, Target, TrendingUp, Clock } from "lucide-react"
+import { StandardHeader } from "@/components/standard-header"
+import { SimpleIcons } from "@/components/simple-icons"
 import { useRouter } from "next/navigation"
 
 // Mock data for attempts
@@ -60,7 +60,6 @@ const mockAttempts = [
 
 export default function AttemptsPage() {
   const router = useRouter()
-
   const totalAttempts = mockAttempts.length
   const correctAttempts = mockAttempts.filter((attempt) => attempt.isCorrect).length
   const totalScore = mockAttempts.reduce((sum, attempt) => sum + attempt.score, 0)
@@ -68,27 +67,8 @@ export default function AttemptsPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Header */}
-      <header className="flex items-center justify-between p-4 bg-gray-900 border-b border-gray-800">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 border-2 border-green-500 rounded flex items-center justify-center">
-            <Shield className="w-4 h-4 text-green-500" />
-          </div>
-          <span className="text-green-500 font-bold text-lg">CIFRA</span>
-        </div>
-
-        <div className="flex items-center gap-4">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-green-500 hover:text-green-400"
-            onClick={() => router.push("/")}
-          >
-            <Home className="w-4 h-4" />
-            <span className="ml-1 text-xs">HOME</span>
-          </Button>
-        </div>
-      </header>
+      {/* Using StandardHeader with showBackButton instead of separate button */}
+      <StandardHeader showBackButton={true} />
 
       {/* Main Content */}
       <main className="p-6 space-y-8">
@@ -102,7 +82,7 @@ export default function AttemptsPage() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <Card className="bg-gray-800 border-gray-700">
             <CardContent className="p-6 text-center">
-              <Target className="w-8 h-8 text-blue-500 mx-auto mb-2" />
+              <SimpleIcons.Target className="w-8 h-8 text-blue-500 mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">{totalAttempts}</div>
               <div className="text-sm text-gray-400">Total de Tentativas</div>
             </CardContent>
@@ -110,7 +90,7 @@ export default function AttemptsPage() {
 
           <Card className="bg-gray-800 border-gray-700">
             <CardContent className="p-6 text-center">
-              <CheckCircle className="w-8 h-8 text-green-500 mx-auto mb-2" />
+              <SimpleIcons.CheckCircle className="w-8 h-8 text-green-500 mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">{correctAttempts}</div>
               <div className="text-sm text-gray-400">Acertos</div>
             </CardContent>
@@ -118,7 +98,7 @@ export default function AttemptsPage() {
 
           <Card className="bg-gray-800 border-gray-700">
             <CardContent className="p-6 text-center">
-              <TrendingUp className="w-8 h-8 text-yellow-500 mx-auto mb-2" />
+              <SimpleIcons.TrendingUp className="w-8 h-8 text-yellow-500 mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">{successRate}%</div>
               <div className="text-sm text-gray-400">Taxa de Sucesso</div>
             </CardContent>
@@ -126,7 +106,7 @@ export default function AttemptsPage() {
 
           <Card className="bg-gray-800 border-gray-700">
             <CardContent className="p-6 text-center">
-              <TrendingUp className="w-8 h-8 text-purple-500 mx-auto mb-2" />
+              <SimpleIcons.TrendingUp className="w-8 h-8 text-purple-500 mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">{totalScore}</div>
               <div className="text-sm text-gray-400">Pontos Totais</div>
             </CardContent>
@@ -137,7 +117,7 @@ export default function AttemptsPage() {
         <Card className="bg-gray-800 border-gray-700">
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
-              <Clock className="w-5 h-5 text-green-500" />
+              <SimpleIcons.Clock className="w-5 h-5 text-green-500" />
               Histórico Detalhado
             </CardTitle>
           </CardHeader>
@@ -171,18 +151,18 @@ export default function AttemptsPage() {
                           </Badge>
                         </td>
                         <td className="py-4 px-4 text-gray-300 flex items-center gap-2">
-                          <Calendar className="w-4 h-4" />
+                          <SimpleIcons.Calendar className="w-4 h-4" />
                           {attempt.date}
                         </td>
                         <td className="py-4 px-4 text-center">
                           {attempt.isCorrect ? (
                             <div className="flex items-center justify-center gap-1 text-green-500">
-                              <CheckCircle className="w-5 h-5" />
+                              <SimpleIcons.CheckCircle className="w-5 h-5" />
                               <span className="text-sm font-semibold">Correto</span>
                             </div>
                           ) : (
                             <div className="flex items-center justify-center gap-1 text-red-500">
-                              <XCircle className="w-5 h-5" />
+                              <SimpleIcons.XCircle className="w-5 h-5" />
                               <span className="text-sm font-semibold">Incorreto</span>
                             </div>
                           )}

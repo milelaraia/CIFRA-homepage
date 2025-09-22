@@ -3,8 +3,8 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import Header from "@/components/header"
-import { Play, Download, Mail, ExternalLink, Clock, Users, FileText, Target, Brain, Globe } from "lucide-react"
+import { StandardHeader } from "@/components/standard-header"
+import { SimpleIcons } from "@/components/simple-icons"
 import { useState } from "react"
 
 export default function TrainingPage() {
@@ -71,7 +71,7 @@ export default function TrainingPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <Header showBackButton={true} />
+      <StandardHeader showBackButton={true} />
 
       {/* Main Content */}
       <main className="p-6">
@@ -112,17 +112,19 @@ export default function TrainingPage() {
                           {module.lessons.map((lesson) => (
                             <div
                               key={lesson.id}
-                              className="flex items-center justify-between p-3 bg-gray-700 rounded-lg hover:bg-gray-600 cursor-pointer transition-colors"
+                              className="flex items-center justify-between p-3 bg-gray-700 rounded-lg hover:bg-gray-600 cursor-pointer transition-colors lesson-link"
                               onClick={() => handleLessonClick(lesson.id)}
+                              data-module-slug={module.id}
+                              data-lesson-slug={lesson.id}
                             >
                               <div className="flex items-center gap-3">
-                                <Play className="w-4 h-4 text-green-500" />
+                                <SimpleIcons.BookOpen className="w-4 h-4 text-green-500" />
                                 <div>
                                   <div className="text-white font-medium">{lesson.title}</div>
                                   <div className="text-gray-400 text-sm">Atualizado: {lesson.date}</div>
                                 </div>
                               </div>
-                              <ExternalLink className="w-4 h-4 text-gray-400" />
+                              <SimpleIcons.ExternalLink className="w-4 h-4 text-gray-400" />
                             </div>
                           ))}
                         </div>
@@ -142,7 +144,7 @@ export default function TrainingPage() {
                 <Card className="bg-gray-800 border-gray-700">
                   <CardHeader>
                     <CardTitle className="text-white flex items-center gap-2">
-                      <Target className="w-5 h-5 text-green-500" />
+                      <SimpleIcons.Target className="w-5 h-5 text-green-500" />
                       Simulações
                     </CardTitle>
                     <p className="text-gray-400 text-sm">Emails, sites falsos e quizzes. Abra para praticar.</p>
@@ -152,12 +154,14 @@ export default function TrainingPage() {
                       {simulations.map((sim) => (
                         <div
                           key={sim.id}
-                          className="flex items-center justify-between p-4 bg-gray-700 rounded-lg hover:bg-gray-600 cursor-pointer transition-colors"
+                          className="flex items-center justify-between p-4 bg-gray-700 rounded-lg hover:bg-gray-600 cursor-pointer transition-colors lesson-link"
+                          data-module-slug="simulations"
+                          data-lesson-slug={sim.id}
                         >
                           <div className="flex items-center gap-3">
-                            {sim.type === "Email" && <Mail className="w-5 h-5 text-blue-500" />}
-                            {sim.type === "Website" && <Globe className="w-5 h-5 text-orange-500" />}
-                            {sim.type === "Quiz" && <Brain className="w-5 h-5 text-purple-500" />}
+                            {sim.type === "Email" && <SimpleIcons.Mail className="w-5 h-5 text-blue-500" />}
+                            {sim.type === "Website" && <SimpleIcons.ExternalLink className="w-5 h-5 text-orange-500" />}
+                            {sim.type === "Quiz" && <SimpleIcons.Target className="w-5 h-5 text-purple-500" />}
                             <div>
                               <div className="text-white font-medium">{sim.title}</div>
                               <Badge variant="outline" className="text-xs mt-1">
@@ -166,7 +170,7 @@ export default function TrainingPage() {
                               <div className="text-gray-400 text-sm mt-1">{sim.description}</div>
                             </div>
                           </div>
-                          <ExternalLink className="w-4 h-4 text-gray-400" />
+                          <SimpleIcons.ExternalLink className="w-4 h-4 text-gray-400" />
                         </div>
                       ))}
                     </div>
@@ -181,7 +185,7 @@ export default function TrainingPage() {
               <Card className="bg-gray-800 border-gray-700">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-green-500" />
+                    <SimpleIcons.BookOpen className="w-5 h-5 text-green-500" />
                     Material Didático
                   </CardTitle>
                 </CardHeader>
@@ -193,7 +197,7 @@ export default function TrainingPage() {
                     disabled
                     className="w-full mb-3 border-gray-600 text-gray-400 bg-transparent"
                   >
-                    <Download className="w-4 h-4 mr-2" />
+                    <SimpleIcons.BookOpen className="w-4 h-4 mr-2" />
                     Guia Completo (em breve)
                   </Button>
                   <p className="text-gray-400 text-xs">Se desejar, envie materiais ao administrador para inclusão.</p>
@@ -204,7 +208,7 @@ export default function TrainingPage() {
               <Card className="bg-gray-800 border-gray-700">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
-                    <Play className="w-5 h-5 text-green-500" />
+                    <SimpleIcons.BookOpen className="w-5 h-5 text-green-500" />
                     Vídeo de Introdução
                   </CardTitle>
                 </CardHeader>
@@ -213,7 +217,7 @@ export default function TrainingPage() {
                     Assista a uma breve introdução sobre os objetivos do treinamento.
                   </p>
                   <div className="flex items-center gap-2 text-gray-400 text-xs">
-                    <Clock className="w-3 h-3" />
+                    <SimpleIcons.Clock className="w-3 h-3" />
                     Duração estimada: 5 minutos
                   </div>
                 </CardContent>
@@ -223,7 +227,7 @@ export default function TrainingPage() {
               <Card className="bg-gray-800 border-gray-700">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
-                    <Users className="w-5 h-5 text-green-500" />
+                    <SimpleIcons.Users className="w-5 h-5 text-green-500" />
                     Suporte
                   </CardTitle>
                 </CardHeader>

@@ -3,8 +3,8 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import Header from "@/components/header"
-import { Trophy, Shield, Flame, Target } from "lucide-react"
+import { StandardHeader } from "@/components/standard-header"
+import { SimpleIcons } from "@/components/simple-icons"
 import { useRouter } from "next/navigation"
 
 export default function HomePage() {
@@ -26,7 +26,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <Header />
+      <StandardHeader />
 
       {/* Main Content */}
       <main className="p-6 space-y-8">
@@ -60,7 +60,7 @@ export default function HomePage() {
                 <CardContent className="p-4 text-center">
                   <div className="text-sm font-semibold text-white mb-3">DESAFIO MENSAL</div>
                   <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mx-auto">
-                    <Trophy className="w-6 h-6 text-black" />
+                    <SimpleIcons.Trophy className="w-6 h-6 text-black" />
                   </div>
                 </CardContent>
               </Card>
@@ -92,16 +92,16 @@ export default function HomePage() {
                     <div className="text-xs text-gray-400 mb-2">CONQUISTAS</div>
                     <div className="flex justify-center gap-2">
                       <Badge variant="secondary" className="bg-yellow-500 text-black p-1">
-                        <Trophy className="w-3 h-3" />
+                        <SimpleIcons.Trophy className="w-3 h-3" />
                       </Badge>
                       <Badge variant="secondary" className="bg-red-500 text-white p-1">
-                        <Shield className="w-3 h-3" />
+                        <SimpleIcons.Shield className="w-3 h-3" />
                       </Badge>
                       <Badge variant="secondary" className="bg-orange-500 text-white p-1">
-                        <Flame className="w-3 h-3" />
+                        <SimpleIcons.Flame className="w-3 h-3" />
                       </Badge>
                       <Badge variant="secondary" className="bg-green-500 text-black p-1">
-                        <Target className="w-3 h-3" />
+                        <SimpleIcons.Target className="w-3 h-3" />
                       </Badge>
                     </div>
                   </div>
